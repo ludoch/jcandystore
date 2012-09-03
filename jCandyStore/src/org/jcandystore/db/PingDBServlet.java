@@ -1,6 +1,9 @@
 package org.jcandystore.db;
 
 import com.google.appengine.api.rdbms.AppEngineDriver;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,40 +19,50 @@ import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
 public class PingDBServlet extends HttpServlet {
-    final String jdbcURL = "jdbc:google:rdbms://scott-tiger:scott/jcandystore";
-    final String sqlSelect = "select * from PRODUCT;";
-    
-    @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/plain");
-        PrintWriter out = resp.getWriter();
+	final String jdbcURL = "jdbc:google:rdbms://scott-tiger:scott/jcandystore";
+	final String sqlSelect = "select * from PRODUCT;";
 
-        Connection c = null;
-        try {
-            out.println("Registering driver with: new AppEngineDriver()");
-            DriverManager.registerDriver(new AppEngineDriver());
-            out.println(jdbcURL);
-            c = DriverManager.getConnection(jdbcURL);
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		PrintWriter out = resp.getWriter();
 
-            Statement stmt = c.createStatement();
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
 
-            out.println(sqlSelect);
-            ResultSet rs = stmt.executeQuery(sqlSelect);
-            while (rs.next()) {
-                out.print(rs.getString("PROD_ID")+"\t");
-                out.print(rs.getString("PROD_CATEGORY")+"\t");
-                out.println(rs.getString("PROD_NAME"));
-            }
+		if (user == null) {
+			resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+		} else {
+			resp.setContentType("text/plain");
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            out.println(e);
-        } finally {
-            if (c != null) 
-                try {
-                    c.close();
-                } catch (SQLException ignore) {
-                }
-        }
-    }
+			Connection c = null;
+			try {
+				out.println("Logged in as : " + user.toString());
+				out.println("Registering driver with: new AppEngineDriver()");
+				DriverManager.registerDriver(new AppEngineDriver());
+				out.println(jdbcURL);
+				c = DriverManager.getConnection(jdbcURL);
+
+				Statement stmt = c.createStatement();
+
+				out.println(sqlSelect);
+				ResultSet rs = stmt.executeQuery(sqlSelect);
+				while (rs.next()) {
+					out.print(rs.getString("PROD_ID") + "\t");
+					out.print(rs.getString("PROD_CATEGORY") + "\t");
+					out.println(rs.getString("PROD_NAME"));
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+				out.println(e);
+			} finally {
+				if (c != null)
+					try {
+						c.close();
+					} catch (SQLException ignore) {
+				}
+			}
+		}
+	}
 }
