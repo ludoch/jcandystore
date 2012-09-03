@@ -99,17 +99,23 @@
           <div class="row-fluid">
             <div class="span4">
               <h2>Jelly Bean</h2>
-              <p><img src="./assets/img/candies/_JellyBeans.png" align="left" hspace="5"/>Jelly beans are a small bean-shaped type of confectionery with a hard candy shell and a gummy interior which come in a wide variety of flavors. The confection is primarily made of sugar. </p>
+              <p><img src="./assets/img/candies/_JellyBeans.png" align="left" hspace="5"/>
+              Jelly beans are a small bean-shaped type of confectionery with a hard candy shell and a gummy
+              interior which come in a wide variety of flavors. The confection is primarily made of sugar. </p>
               <p><a class="btn" href="#">Buy now! &raquo;</a></p>
             </div><!--/span-->
             <div class="span4">
               <h2>Caramel</h2>
-              <p><img src="./assets/img/candies/_Caramel.png" align="left" hspace="5"/>Beige to dark-brown confectionery product made by heating any of a variety of sugars. It is used as a flavoring in puddings and desserts, as a filling in bonbons, and as a topping for ice cream and coffee.</p>
+              <p><img src="./assets/img/candies/_Caramel.png" align="left" hspace="5"/>
+              Beige to dark-brown confectionery product made by heating any of a variety of sugars. It is used as a
+              flavoring in puddings and desserts, as a filling in bonbons, and as a topping for ice cream and coffee.</p>
               <p><a class="btn" href="#">Buy now! &raquo;</a></p>
             </div><!--/span-->
             <div class="span4">
               <h2>Roudoudou</h2>
-              <p><img src="./assets/img/candies/_Roudoudou.png" align="left" hspace="5"/>Le roudoudou est une confiserie en sucre cuit parfumÃ©, coulÃ©e dans une petite coquille en plastique. Ã l'origine le contenant Ã©tait une petite boite en bois style boite Ã  camembert miniature. </p>
+              <p><img src="./assets/img/candies/_Roudoudou.png" align="left" hspace="5"/>
+              Le roudoudou est une confiserie en sucre cuit parfumée, coulée dans une petite coquille en plastique.
+              A l'origine le contenant était une petite boite en bois style boite à camembert miniature. </p>
               <p><a class="btn" href="#">Buy now! &raquo;</a></p>
             </div><!--/span-->
           </div><!--/row-->

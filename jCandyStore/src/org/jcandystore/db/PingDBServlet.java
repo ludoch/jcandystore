@@ -25,14 +25,16 @@ public class PingDBServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		PrintWriter out = resp.getWriter();
 
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();
 
+		// need to be authenticated
+		// TODO: make this available to Administrators only
 		if (user == null) {
 			resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
 		} else {
+	        PrintWriter out = resp.getWriter();
 			resp.setContentType("text/plain");
 
 			Connection c = null;
