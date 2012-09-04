@@ -51,19 +51,21 @@
           <a class="brand" href="#">jCandyStore</a>
           <div class="btn-group pull-right">
             
-<%
-    UserService userService = UserServiceFactory.getUserService();
-    User user = userService.getCurrentUser();
-    if (user != null) {
-      pageContext.setAttribute("user", user);
-%>
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-user"></i> ${user}
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign Out</a></li>
-            </ul>
+            <%
+            UserService userService = UserServiceFactory.getUserService();
+            User user = userService.getCurrentUser();
+            if (user != null) {
+               pageContext.setAttribute("user", user);
+            %>
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-user"></i> ${user}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/cart">Shopping Cart</a></li>
+                    <li class="divider"></li>
+                    <li><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign Out</a></li>
+                </ul>
             <%
               } else {
             %>
@@ -77,8 +79,8 @@
           </div>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
+              <li><a href="/">Home</a></li>
+              <li class="active"><a href="#about">About</a></li>
               <!-- 
               <li><a href="#contact">Contact</a></li>
                -->
@@ -117,11 +119,11 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
     <script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/bootstrap-transition.js"></script>
+<!--     <script src="./assets/js/bootstrap-transition.js"></script>  -->
     <script src="./assets/js/bootstrap-alert.js"></script>
     <script src="./assets/js/bootstrap-modal.js"></script>
     <script src="./assets/js/bootstrap-dropdown.js"></script>
-    <script src="./assets/js/bootstrap-scrollspy.js"></script>
+<!--    <script src="./assets/js/bootstrap-scrollspy.js"></script>  -->
     <script src="./assets/js/bootstrap-tab.js"></script>
     <script src="./assets/js/bootstrap-tooltip.js"></script>
     <script src="./assets/js/bootstrap-popover.js"></script>

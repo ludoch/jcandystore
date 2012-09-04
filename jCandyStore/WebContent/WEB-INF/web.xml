@@ -14,7 +14,6 @@
     <servlet-name>JAX-RS Servlet</servlet-name>
     <url-pattern>/resources/*</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description></description>
     <servlet-name>ProductViewServlet</servlet-name>
@@ -23,5 +22,15 @@
   <servlet-mapping>
     <servlet-name>ProductViewServlet</servlet-name>
     <url-pattern>/productView</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShoppingCartServlet</display-name>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <servlet-class>org.jcandystore.views.ShoppingCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <url-pattern>/ShoppingCartServlet</url-pattern>
   </servlet-mapping>
 </web-app>

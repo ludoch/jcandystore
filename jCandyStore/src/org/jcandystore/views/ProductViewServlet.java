@@ -1,7 +1,5 @@
 package org.jcandystore.views;
 
-import com.google.appengine.api.search.ExpressionParser.num_return;
-
 import org.jcandystore.model.Product;
 import org.jcandystore.services.ProductService;
 
@@ -12,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ProductViewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -41,7 +40,7 @@ public class ProductViewServlet extends HttpServlet {
                 out.println("<br/><a href=\"./productView?id=" + p.getProdId() + "\">");
                 out.println("" + p.getDescription() + "</a>");
             }
-        } else { // show individual product
+        } else { // show individual product and buy it
             Product zeProduct = null;
             zeProduct = productService.find(productId);
             if (zeProduct == null) {
@@ -50,7 +49,17 @@ public class ProductViewServlet extends HttpServlet {
                 //resp.sendRedirect();
             } else {
                 out.println (zeProduct.getDescription());
-                // TODO: add buy link
+                // TODO: print price
+                
+                String prodId = zeProduct.getProdId();
+                HttpSession session = req.getSession();
+                
+                Integer currentAmount = (Integer)session.getAttribute( prodId );
+                if (currentAmount == null ) { // no such product in the shopping cart 
+                    session.setAttribute(prodId, new Integer(1));
+                } else { // increment count by 1
+                    session.setAttribute(prodId, new Integer(currentAmount.intValue() + 1));
+                }
             }
         }
     }

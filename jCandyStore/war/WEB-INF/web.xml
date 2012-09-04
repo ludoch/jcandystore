@@ -68,6 +68,16 @@
     <url-pattern>/productView</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <description/>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <servlet-class>org.jcandystore.views.ShoppingCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <url-pattern>/cart</url-pattern>
+  </servlet-mapping>
+
 
   <!-- security-constraint>
     <web-resource-collection>
