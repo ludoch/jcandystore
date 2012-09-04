@@ -48,6 +48,16 @@
     <servlet-name>appstats</servlet-name>
     <url-pattern>/appstats/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>JerseyServlet</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JerseyServlet</servlet-name>
+    <url-pattern>/resources/*</url-pattern>
+  </servlet-mapping>
+   
 
   <!-- security-constraint>
     <web-resource-collection>

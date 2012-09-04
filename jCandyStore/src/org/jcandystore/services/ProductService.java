@@ -1,7 +1,7 @@
 package org.jcandystore.services;
 
 import org.jcandystore.db.PersistenceService;
-import org.jcandystore.model.Account;
+import org.jcandystore.model.Product;
 
 import java.util.List;
 
@@ -17,17 +17,17 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-@Path("/account")
-public class AccountService {
+@Path("/product")
+public class ProductService {
     private EntityManager em;
     
-    public AccountService() {
+    public ProductService() {
         em = PersistenceService.getInstance().getEntityManager();
     }
 
     @POST
     @Consumes({"application/xml", "application/json"})
-    public void create(Account entity) {
+    public void create(Product entity) {
         try {
             em.persist(entity);
         } catch (PersistenceException pe) {
@@ -37,7 +37,7 @@ public class AccountService {
 
     @PUT
     @Consumes({"application/xml", "application/json"})
-    public void edit(Account entity) {
+    public void edit(Product entity) {
         try {
         em.merge(entity);
         } catch (PersistenceException pe) {
@@ -48,22 +48,22 @@ public class AccountService {
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") String id) {
-        em.remove(em.merge(em.find(Account.class, id)));
+        em.remove(em.merge(em.find(Product.class, id)));
     }
 
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public Account find(@PathParam("id") String id) {
-        Query q = em.createNamedQuery("Account.findByUserId")
-                .setParameter("userId", id);
-        return (Account) q.getSingleResult();
+    public Product find(@PathParam("id") String id) {
+        Query q = em.createNamedQuery("Product.findByProdId")
+                .setParameter("prodId", id);
+        return (Product) q.getSingleResult();
     }
 
     @GET
     @Produces({"application/xml", "application/json"})
-    public List<Account> findAll() {
-        Query query = em.createNamedQuery("Account.findAll");
+    public List<Product> findAll() {
+        Query query = em.createNamedQuery("Product.findAll");
         return query.getResultList();
     }
 
