@@ -7,6 +7,7 @@ import org.jcandystore.model.Product;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 import javax.ws.rs.Consumes;
@@ -21,7 +22,7 @@ import javax.ws.rs.Produces;
 @Path("/product")
 public class ProductService {
     private EntityManager em;
-    
+
     public ProductService() {
         em = PersistenceService.getInstance().getEntityManager();
     }
@@ -40,7 +41,7 @@ public class ProductService {
     @Consumes({"application/xml", "application/json"})
     public void edit(Product entity) {
         try {
-        em.merge(entity);
+            em.merge(entity);
         } catch (PersistenceException pe) {
             pe.printStackTrace();
         }
@@ -56,9 +57,12 @@ public class ProductService {
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
     public Product find(@PathParam("id") String id) {
-        Query q = em.createNamedQuery("Product.findByProdId")
-                .setParameter("prodId", id);
-        return (Product) q.getSingleResult();
+        try {
+            Query q = em.createNamedQuery("Product.findByProdId").setParameter("prodId", id);
+            return (Product) q.getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }        
     }
 
     @GET
@@ -69,14 +73,17 @@ public class ProductService {
     }
 
     public List<Product> findByCategory(String category) {
-        Category cat = (Category) em.createNamedQuery("Category.findByCatId")
-                .setParameter("catId", category)
-                .getSingleResult();
-        Query query = em.createNamedQuery("Product.findByCategory");
-        query.setParameter("category", cat);
-        return query.getResultList();
-    }    
-    
+        try {
+            Category cat = (Category) em.createNamedQuery("Category.findByCatId")
+                    .setParameter("catId", category).getSingleResult();
+            Query query = em.createNamedQuery("Product.findByCategory");
+            query.setParameter("category", cat);
+            return query.getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
     protected EntityManager getEntityManager() {
         return em;
     }

@@ -78,8 +78,10 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
+              <li><a href="about.jsp">About</a></li>
+              <!-- 
               <li><a href="#contact">Contact</a></li>
+               -->
             </ul>
           </div>
         </div>
@@ -91,8 +93,76 @@
           <div class="hero-unit">
             <h1>Welcome to jCandyStore!</h1>
             <p style="font-style:italic">... because pets are so XXth century !</p>
-            <p>
-              <img src="./assets/img/ManyCandies.jpg" alt="image from http://www.flickr.com/photos/siderean/423705391/"/>
+<p>
+              <!-- <img src="./assets/img/ManyCandies.jpg" alt="image from http://www.flickr.com/photos/siderean/423705391/"/> -->
+               <div class="row-fluid">
+                  <div class="span4">
+                    <p>
+                      <a href="/productView?cat=ACIDULE" title="Acidulés">
+                        <!-- <img src="./assets/img/categories/acidules_icon.jpg"> -->
+                        Acidulés
+                      </a>
+                    </p>
+                  </div>
+                  <div class="span4">
+                    <p>
+                      <a href="/productView?cat=BONBON" title="Bonbons">
+                        <!-- <img src="./assets/img/categories/bonbon_icon.jpg"> -->
+                        Bonbons
+                      </a>
+                    </p>
+                  </div>
+                  <div class="span4">
+                    <p>
+                      <a href="/productView?cat=CARAMEL" title="Caramels">
+                        <!-- <img src="./assets/img/categories/caramel_icon.jpg"> -->
+                        Caramels
+                      </a>
+                    </p>
+                  </div>
+<!--                   <div class="span4">
+                    <p>
+                      <a href="/productView?cat=REGLISSE" title="Réglisses">
+                        <img src="./assets/img/categories/reglisse_icon.jpg">
+                        Réglisses
+                      </a>
+                    </p>
+                  </div>                  --> 
+                </div>
+               <div class="row-fluid">
+                  <div class="span4">
+                    <p>
+                      <a href="/productView?cat=CHOCOLAT" title="Chocolats">
+                        <!-- <img src="./assets/img/categories/chocolat_icon.jpg"> -->
+                        Chocolats
+                      </a>
+                    </p>
+                  </div>
+                  <div class="span4">
+                    <p>
+                      <a href="/productView?cat=GELIFIE" title="Gélifiés">
+                        <!-- <img src="./assets/img/categories/gelifie_icon.jpg"> -->
+                        Gélifiés
+                      </a>
+                    </p>
+                  </div>
+                  <div class="span4">
+                    <p>
+                      <a href="/productView?cat=PATISSERIE" title="Patisseries">
+                        <!-- <img src="./assets/img/categories/patisseries_icon.jpg"> -->
+                        Patisseries
+                      </a>
+                    </p>
+                  </div>
+<!--                   <div class="span4">
+                    <p>
+                      <a href="/productView?cat=SUCETTE" title="Sucettes">
+                        <img src="./assets/img/categories/sucette_icon.jpg">
+                        Sucettes
+                      </a>
+                    </p>
+                  </div> -->
+                </div>                
             </p>
             <p><a class="btn btn-primary btn-large">Start shopping! &raquo;</a></p>
           </div>
@@ -102,21 +172,21 @@
               <p><img src="./assets/img/candies/_JellyBeans.png" align="left" hspace="5"/>
               Jelly beans are a small bean-shaped type of confectionery with a hard candy shell and a gummy
               interior which come in a wide variety of flavors. The confection is primarily made of sugar. </p>
-              <p><a class="btn" href="#">Buy now! &raquo;</a></p>
+              <p><a class="btn" href="/productView?id=GE-PO-05">Buy now! &raquo;</a></p>
             </div><!--/span-->
             <div class="span4">
               <h2>Caramel</h2>
               <p><img src="./assets/img/candies/_Caramel.png" align="left" hspace="5"/>
               Beige to dark-brown confectionery product made by heating any of a variety of sugars. It is used as a
               flavoring in puddings and desserts, as a filling in bonbons, and as a topping for ice cream and coffee.</p>
-              <p><a class="btn" href="#">Buy now! &raquo;</a></p>
+              <p><a class="btn" href="/productView?id=CA-RT-02">Buy now! &raquo;</a></p>
             </div><!--/span-->
             <div class="span4">
               <h2>Roudoudou</h2>
               <p><img src="./assets/img/candies/_Roudoudou.png" align="left" hspace="5"/>
               Le roudoudou est une confiserie en sucre cuit parfumée, coulée dans une petite coquille en plastique.
               A l'origine le contenant était une petite boite en bois style boite à camembert miniature. </p>
-              <p><a class="btn" href="#">Buy now! &raquo;</a></p>
+              <p><a class="btn" href="/productView?id=SU-PO-03">Buy now! &raquo;</a></p>
             </div><!--/span-->
           </div><!--/row-->
       </div><!--/row-->

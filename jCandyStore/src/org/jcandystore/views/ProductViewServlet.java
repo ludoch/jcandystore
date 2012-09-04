@@ -42,10 +42,11 @@ public class ProductViewServlet extends HttpServlet {
                 out.println("" + p.getDescription() + "</a>");
             }
         } else { // show individual product
-            Product zeProduct = productService.find(productId);
+            Product zeProduct = null;
+            zeProduct = productService.find(productId);
             if (zeProduct == null) {
-                out.println(productId + " : no such product found");
-                out.println("<a href=\"/\">Back</a>");
+                out.println(productId + " : no such product found!");
+                out.println("<br/><a href=\"/\">Back</a>");
                 //resp.sendRedirect();
             } else {
                 out.println (zeProduct.getDescription());
