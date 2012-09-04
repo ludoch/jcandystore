@@ -1,6 +1,7 @@
 package org.jcandystore.services;
 
 import org.jcandystore.db.PersistenceService;
+import org.jcandystore.model.Category;
 import org.jcandystore.model.Product;
 
 import java.util.List;
@@ -67,8 +68,17 @@ public class ProductService {
         return query.getResultList();
     }
 
-    protected EntityManager getEntityManager() {
-        return em;
+    public List<Product> findByCategory(String category) {
+        Category cat = (Category) em.createNamedQuery("Category.findByCatId")
+                .setParameter("catId", category)
+                .getSingleResult();
+        Query query = em.createNamedQuery("Product.findByCategory");
+        query.setParameter("category", cat);
+        return query.getResultList();
     }    
     
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
 }

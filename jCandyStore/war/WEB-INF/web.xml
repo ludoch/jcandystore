@@ -58,6 +58,16 @@
     <url-pattern>/resources/*</url-pattern>
   </servlet-mapping>
    
+  <servlet>
+    <description/>
+    <servlet-name>ProductViewServlet</servlet-name>
+    <servlet-class>org.jcandystore.views.ProductViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductViewServlet</servlet-name>
+    <url-pattern>/productView</url-pattern>
+  </servlet-mapping>
+
 
   <!-- security-constraint>
     <web-resource-collection>
