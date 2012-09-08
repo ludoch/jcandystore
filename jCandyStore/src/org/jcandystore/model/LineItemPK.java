@@ -15,7 +15,8 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class LineItemPK implements Serializable {
-    @Basic(optional = false)
+	private static final long serialVersionUID = 6939306242751504222L;
+	@Basic(optional = false)
     @Column(name = "ORDER_ID", nullable = false)
     private int orderId;
     @Basic(optional = false)

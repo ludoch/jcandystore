@@ -1,18 +1,18 @@
 INSERT INTO A_SEQUENCE VALUES ('ORDER_NUM', 1000);
 INSERT INTO A_SEQUENCE VALUES ('LINE_NUM', 1000);
 
-INSERT INTO CATEGORY VALUES ('REGLISSE','Réglisse','<image src="./assets/img/candies/reglisse_icon.jpg"><font size="5" color="blue"> R&eacute;glisse</font>');
+INSERT INTO CATEGORY VALUES ('REGLISSE','R&eacute;glisse','<image src="./assets/img/candies/reglisse_icon.jpg"><font size="5" color="blue"> R&eacute;glisse</font>');
 INSERT INTO CATEGORY VALUES ('CARAMEL','Caramel','<image src="./assets/img/candies/caramel_icon.jpg"><font size="5" color="blue"> Caramel</font>');
 INSERT INTO CATEGORY VALUES ('CHOCOLAT','Chocolat','<image src="./assets/img/candies/chocolat_icon.jpg"><font size="5" color="blue"> Chocolat</font>');
 INSERT INTO CATEGORY VALUES ('SUCETTE','Sucette','<image src="./assets/img/candies/sucette_icon.jpg"><font size="5" color="blue"> Sucettes</font>');
-INSERT INTO CATEGORY VALUES ('ACIDULE','Acidulé','<image src="./assets/img/candies/acidule_icon.jpg"><font size="5" color="blue"> Acidul&eacute;s</font>');
-INSERT INTO CATEGORY VALUES ('GELIFIE','Gelifié','<image src="./assets/img/candies/gelifie_icon.jpg"><font size="5" color="blue"> Gelifiés</font>');
+INSERT INTO CATEGORY VALUES ('ACIDULE','Acidul&eacute;','<image src="./assets/img/candies/acidule_icon.jpg"><font size="5" color="blue"> Acidul&eacute;s</font>');
+INSERT INTO CATEGORY VALUES ('GELIFIE','Gelifi&eacute;','<image src="./assets/img/candies/gelifie_icon.jpg"><font size="5" color="blue"> Gelifi&eacute;s</font>');
 INSERT INTO CATEGORY VALUES ('BONBON','Bonbon','<image src="./assets/img/candies/bonbon_icon.jpg"><font size="5" color="blue"> Bonbons</font>');
 INSERT INTO CATEGORY VALUES ('PATISSERIE','Patisserie','<images src="./assets/img/candies/patisseries_icon.jpg"><font size="5" color="blue"> Patisseries</font>');
 
-INSERT INTO PRODUCT VALUES ('CH-SW-01','CHOCOLAT','Assortiment Chocolats','<image src="./assets/img/candies/AssortimentChocolats.png">Assortiment de chocolats de qualité');
-INSERT INTO PRODUCT VALUES ('AC-SW-02','ACIDULE','Assortiment Bonbons','<image src="./assets/img/candies/AssortimentsBonbons.png">Assortiment de bonbons acidulés');
-INSERT INTO PRODUCT VALUES ('RE-FW-01','REGLISSE', 'Baton de réglisse.','<image src="./assets/img/candies/BatonReglisse.png">Baton de réglisse. Souvenir, souvenir...');
+INSERT INTO PRODUCT VALUES ('CH-SW-01','CHOCOLAT','Assortiment Chocolats','<image src="./assets/img/candies/AssortimentChocolats.jpg">Assortiment de chocolats de qualit&eacute;');
+INSERT INTO PRODUCT VALUES ('AC-SW-02','ACIDULE','Assortiment Bonbons','<image src="./assets/img/candies/AssortimentsBonbons.png">Assortiment de bonbons acidul&eacute;s');
+INSERT INTO PRODUCT VALUES ('RE-FW-01','REGLISSE', 'Baton de r&eacute;glisse.','<image src="./assets/img/candies/BatonReglisse.png">Baton de r&eacute;glisse. Souvenir, souvenir...');
 INSERT INTO PRODUCT VALUES ('BO-FW-02','BONBON', 'Berlingots','<image src="./assets/img/candies/Berlingots.png">Berlingots de toutes les couleurs');
 INSERT INTO PRODUCT VALUES ('CH-BD-01','CHOCOLAT','Boite de chocolats','<image src="./assets/img/candies/BoiteChocolats.png">Boite de chocolats fins');
 INSERT INTO PRODUCT VALUES ('AC-DL-01','ACIDULE','Bonbons en vrac','<image src="./assets/img/candies/BonbonsVrac.png">Bonbons acidul&eacute;s en vrac');
@@ -21,7 +21,7 @@ INSERT INTO PRODUCT VALUES ('CA-RT-02','CARAMEL','Caramel','<image src="./assets
 INSERT INTO PRODUCT VALUES ('AC-CW-01','ACIDULE','Carensac','<image src="./assets/img/candies/Carensac.png">Carensac, en sachet de 80');
 INSERT INTO PRODUCT VALUES ('GE-SN-01','GELIFIE','Cerises','<image src="./assets/img/candies/Cerises.png">Cerises');
 INSERT INTO PRODUCT VALUES ('CH-LI-02','CHOCOLAT','Chocolat au lait','<image src="./assets/img/candies/ChocolatLait.png">Chocolat au lait pour enfant de tout age');
-INSERT INTO PRODUCT VALUES ('CH-DSH-01','CHOCOLAT','Chocolat fins','<image src="./assets/img/candies/ChocolatsFins.png">Chocolat fins, idéal avec un caf&eacute;.');
+INSERT INTO PRODUCT VALUES ('CH-DSH-01','CHOCOLAT','Chocolat fins','<image src="./assets/img/candies/ChocolatsFins.png">Chocolat fins, id&eacute;al avec un caf&eacute;.');
 INSERT INTO PRODUCT VALUES ('SU-DLH-02','SUCETTE','Chupa Chupps','<image src="./assets/img/candies/ChupaChupps.png">Chuppa Chupps, par 2');
 INSERT INTO PRODUCT VALUES ('PA-PO-02','PATISSERIE','Cup Cake','<image src="./assets/img/candies/Cupcake.png">Cup, cake, the one and only');
 INSERT INTO PRODUCT VALUES ('GE-PO-03','GELIFIE','Dents Dracula','<image src="./assets/img/candies/DentsDracula.png">Dents de Dracula');
@@ -54,7 +54,7 @@ INSERT INTO PRODUCT VALUES ('SU-PO-04','SUCETTE','Sucettes anciennes','<image sr
 INSERT INTO PRODUCT VALUES ('SU-PO-05','SUCETTE','Sucette sifflet','<image src="./assets/img/candies/SucettesSifflet.png">Deux en un, sucettes et sifflet');
 INSERT INTO PRODUCT VALUES ('CA-PO-02','CARAMEL','Werthers','<image src="./assets/img/candies/WerthersOriginal.png">Werthers. Enough said');
 INSERT INTO PRODUCT VALUES ('AC-CB-01','ACIDULE','Cola Bizz','<image src="./assets/img/candies/ColaBizz.png">Bouteilles de cola');
-INSERT INTO PRODUCT VALUES ('AC-SB-02','ACIDULE','Collier','<image src="./assets/img/candies/Collier.png">Collier à croquer');
+INSERT INTO PRODUCT VALUES ('AC-SB-02','ACIDULE','Collier','<image src="./assets/img/candies/Collier.png">Collier &agrave; croquer');
 
 INSERT INTO SUPPLIER VALUES (1,'iCandy','AC','1200 Addicted Street','','San Francisco','CA','94024','415-427-1999');
 INSERT INTO SUPPLIER VALUES (2,'Le Bonbon','AC','13, rue des confiseries','','Paris','','75008','01-45-92-22-34');

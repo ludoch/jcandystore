@@ -103,6 +103,14 @@
                 <li>...</li>
             </ul>
 
+			<h2>and standard server-side Java APIs :</h2>
+			<ul>
+				<li>Servlet HttpSession</li>
+				<li>JPA 2.0</li>
+				<li>JAX-RS 1.1</li>
+				<li>JSF 2.0</li>
+				<li>...</li>
+			</ul>
           </div>
       </div><!--/row-->
 

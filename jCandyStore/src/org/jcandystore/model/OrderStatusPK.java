@@ -15,7 +15,8 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class OrderStatusPK implements Serializable {
-    @Basic(optional = false)
+	private static final long serialVersionUID = -6642891915524295111L;
+	@Basic(optional = false)
     @Column(name = "ORDER_ID", nullable = false)
     private int orderId;
     @Basic(optional = false)

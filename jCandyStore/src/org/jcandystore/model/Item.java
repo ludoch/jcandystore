@@ -18,22 +18,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Item.findAll", query = "SELECT i FROM Item i"),
-    @NamedQuery(name = "Item.findByItemId", query = "SELECT i FROM Item i WHERE i.itemId = :itemId"),
-    @NamedQuery(name = "Item.findByListPrice", query = "SELECT i FROM Item i WHERE i.listPrice = :listPrice"),
-    @NamedQuery(name = "Item.findByUnitCost", query = "SELECT i FROM Item i WHERE i.unitCost = :unitCost"),
-    @NamedQuery(name = "Item.findByStatus", query = "SELECT i FROM Item i WHERE i.status = :status"),
-    @NamedQuery(name = "Item.findByAttr1", query = "SELECT i FROM Item i WHERE i.attr1 = :attr1"),
-    @NamedQuery(name = "Item.findByAttr2", query = "SELECT i FROM Item i WHERE i.attr2 = :attr2"),
-    @NamedQuery(name = "Item.findByAttr3", query = "SELECT i FROM Item i WHERE i.attr3 = :attr3"),
-    @NamedQuery(name = "Item.findByAttr4", query = "SELECT i FROM Item i WHERE i.attr4 = :attr4"),
-    @NamedQuery(name = "Item.findByAttr5", query = "SELECT i FROM Item i WHERE i.attr5 = :attr5")})
+    @NamedQuery(name = "Item.findByProdId", query = "SELECT i FROM Item i WHERE i.product.prodId = :prodId"),
+    @NamedQuery(name = "Item.findByStatus", query = "SELECT i FROM Item i WHERE i.status = :status")})
 public class Item implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "ITEM_ID", nullable = false, length = 10)
     private String itemId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "LIST_PRICE", precision = 10, scale = 2)
     private BigDecimal listPrice;
     @Column(name = "UNIT_COST", precision = 10, scale = 2)
