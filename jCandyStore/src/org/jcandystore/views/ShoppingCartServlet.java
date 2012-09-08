@@ -29,6 +29,7 @@ public class ShoppingCartServlet extends HttpServlet {
 			throws IOException {
 		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/html;charset=UTF-8");
+		float grandTotal = 0;
 
 		ProductService productService = new ProductService();
 		ItemService itemService = new ItemService();
@@ -40,7 +41,6 @@ public class ShoppingCartServlet extends HttpServlet {
 		if (!e.hasMoreElements()) {
 			out.println("<em>(empty cart)</em>");
 		} else {
-			float grandTotal = 0;
 			String prodId, prodName = null;
 			Product zeProduct = null;
 			Item zeItem = null;
@@ -51,7 +51,7 @@ public class ShoppingCartServlet extends HttpServlet {
 				zeProduct = productService.find(prodId);
 				prodName = zeProduct.getProdName();
 
-				out.println("<br/>" + prodName + " : ");
+				out.println("&bull; " + prodName + " : ");
 				// retrieve product quantity
 				Integer quantity = (Integer) session.getAttribute(prodId);
 				out.println(quantity);
