@@ -17,7 +17,7 @@
 
 	<!-- Reduce request latency by configuring the application to asynchronously 
 		write HTTP session data to the datastore -->
-	<async-session-persistence enabled="true" />
+	<async-session-persistence enabled="false" />
 
 	<admin-console>
 		<page name="Appstats" url="/appstats" />
