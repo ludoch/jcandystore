@@ -118,10 +118,6 @@ public class Orders implements Serializable {
     private String locale;
 
     public Orders() {
-    }
-
-    public Orders(Integer orderId) {
-        this.orderId = orderId;
         // populate required fields with dummy data
         this.orderDate = new Date();
         this.shipAddr1 = "123 highway road";
@@ -139,6 +135,14 @@ public class Orders implements Serializable {
         this.exprDate = "Never";
         this.cardType = "YesCard";
         this.locale = "FR_en";
+        this.shipToFirstname = "First Ship";
+        this.sihpToLastname = "Last Ship";
+        this.billToFirstname = "First Bill";
+        this.billToLastname = "Last Bill";
+    }
+
+    public Orders(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public Orders(Integer orderId, String userId, Date orderDate, String shipAddr1, String shipCity, String shipState, String shipZip, String shipCountry, String billAddr1, String billCity, String billState, String billZip, String billCountry, String courier, BigDecimal totalPrice, String billToFirstname, String billToLastname, String shipToFirstname, String sihpToLastname, String creditCard, String exprDate, String cardType, String locale) {

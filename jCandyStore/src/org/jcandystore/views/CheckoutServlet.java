@@ -37,7 +37,7 @@ public class CheckoutServlet extends HttpServlet {
 		// retrieve connected user
 		UserService userService = UserServiceFactory.getUserService();
 		User user = userService.getCurrentUser();		
-		newOrder.setUserId(user.getUserId());
+		newOrder.setUserId(user.getEmail());
 		
 		int id = (user.getUserId()+new Date()).hashCode();
 		newOrder.setOrderId(Math.abs(id));

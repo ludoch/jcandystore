@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServlet;
@@ -63,12 +64,13 @@ public class ShoppingCartServlet extends HttpServlet {
 					BigDecimal price = zeItem.getListPrice();
 					out.println(" @ " + price + " euros");
 					grandTotal += quantity.floatValue() * price.floatValue();
+					grandTotal = (new BigDecimal(grandTotal)).setScale(2, RoundingMode.HALF_UP).floatValue();
 					session.setAttribute("grandTotal", grandTotal);
 				}
 			}
 		}
-		// TODO: round off grand total
-
+		// round off grand total
+		
 		out.println("<br/><br/><h2>Grand Total: " + grandTotal + " euros<h2>");
 		
 		// TODO: add "checkout" and "continue shopping buttons"
