@@ -24,19 +24,31 @@ public class CheckoutServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/html;charset=UTF-8");
 
+		// retrieve connected user
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+		
+		if (user == null) {
+			resp.sendRedirect(userService.createLoginURL(request.getRequestURI()));
+		}
+		
 		OrdersService orderService = new OrdersService();
 
 		// retrieve grand total
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
+		// check for empty session/cart
+		if ( !session.getAttributeNames().hasMoreElements() ) {
+			out.println("<h2>Empty cart!</h2>");
+			out.println("<br/><a href=\"/\">Back Home</a>");			
+		}
+		
+		// retrieve grandTotal (rather than recalculate)
 		Float grandTotal = (Float)session.getAttribute("grandTotal");		
 
 		// create empty JPA entity
 		Orders newOrder = new Orders();
 		newOrder.setTotalPrice(new BigDecimal(grandTotal));
 		
-		// retrieve connected user
-		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();		
 		newOrder.setUserId(user.getEmail());
 		
 		int id = (user.getUserId()+new Date()).hashCode();
@@ -48,6 +60,10 @@ public class CheckoutServlet extends HttpServlet {
 		
 		// persist object using JPA
 		orderService.create(newOrder);
+		
+		out.println("<h2>Order taken!</h2>");
+		out.println("<h4>Now processing shipping...</a>");
+		out.println("<br/><p><a href=\"/\">Back Home</a></p>");
 		
 		// Send detailed order (content of session) to backoffice queue for shipping
 		// Work with LineItems, ... TODO ...

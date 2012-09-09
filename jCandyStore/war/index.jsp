@@ -101,28 +101,28 @@
                   <div class="span2">
                     <p>
                       <a href="/productView?cat=ACIDULE" title="Acidulés">
-						<img src="./assets/img/categories/acidules_icon.jpg">
+						<img src="./assets/img/categories/acidules.png">
                       </a>
                     </p>
                   </div>
                   <div class="span2">
                     <p>
                       <a href="/productView?cat=BONBON" title="Bonbons">
-                        <img src="./assets/img/categories/bonbon_icon.jpg">
+                        <img src="./assets/img/categories/bonbon.png">
                       </a>
                     </p>
                   </div>
                   <div class="span2">
                     <p>
                       <a href="/productView?cat=CARAMEL" title="Caramels">
-                        <img src="./assets/img/categories/caramel_icon.jpg">
+                        <img src="./assets/img/categories/caramel.png">
                       </a>
                     </p>
                   </div>
                   <div class="span2">
                     <p>
                       <a href="/productView?cat=REGLISSE" title="Réglisses">
-                        <img src="./assets/img/categories/reglisse_icon.jpg">
+                        <img src="./assets/img/categories/reglisse.png">
                       </a>
                     </p>
                   </div> 
@@ -131,28 +131,28 @@
                   <div class="span2">
                     <p>
                       <a href="/productView?cat=CHOCOLAT" title="Chocolats">
-                        <img src="./assets/img/categories/chocolat_icon.jpg">
+                        <img src="./assets/img/categories/chocolat.png">
                       </a>
                     </p>
                   </div>
                   <div class="span2">
                     <p>
                       <a href="/productView?cat=GELIFIE" title="Gélifiés">
-                        <img src="./assets/img/categories/gelifie_icon.jpg">
+                        <img src="./assets/img/categories/gelifie.png">
                       </a>
                     </p>
                   </div>
                   <div class="span2">
                     <p>
                       <a href="/productView?cat=PATISSERIE" title="Patisseries">
-                        <img src="./assets/img/categories/patisseries_icon.jpg">
+                        <img src="./assets/img/categories/patisseries.png">
                       </a>
                     </p>
                   </div>
                   <div class="span2">
                     <p>
                       <a href="/productView?cat=SUCETTE" title="Sucettes">
-                        <img src="./assets/img/categories/sucette_icon.jpg">
+                        <img src="./assets/img/categories/sucette.png">
                       </a>
                     </p>
                   </div>

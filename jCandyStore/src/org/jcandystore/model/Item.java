@@ -43,12 +43,12 @@ public class Item implements Serializable {
     @Column(name = "ATTR5", length = 80)
     private String attr5;
     @JoinColumns({
-        @JoinColumn(name = "SUPPLIER", referencedColumnName = "SUPP_ID"),
+//        @JoinColumn(name = "SUPPLIER", referencedColumnName = "SUPP_ID"),
         @JoinColumn(name = "SUPPLIER", referencedColumnName = "SUPP_ID")})
     @ManyToOne
     private Supplier supplier;
     @JoinColumns({
-        @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PROD_ID", nullable = false),
+//        @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PROD_ID", nullable = false),
         @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PROD_ID", nullable = false)})
     @ManyToOne(optional = false)
     private Product product;

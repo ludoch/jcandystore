@@ -74,10 +74,8 @@ public class ItemService {
     public Item findByProdId(@PathParam("id") String id) {
         try {
             Query q = em.createNamedQuery("Item.findByProdId").setParameter("prodId", id);
-            if (q.getMaxResults() > 1) {
-            	System.out.println("Warning: Multiple products with Id = " + id);
-            }
-            return (Item) q.getSingleResult();
+            // Can return multiple instances, so return 1st one only
+            return (Item) q.getResultList().get(0);
         } catch (NoResultException nre) {
             return null;
         }        

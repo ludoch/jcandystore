@@ -75,6 +75,9 @@ public class ShoppingCartServlet extends HttpServlet {
 		
 		// TODO: add "checkout" and "continue shopping buttons"
 		
+		out.println("<br/><a class=\"btn\" href=\"/checkout\">Checkout</a>");
+		out.println("<br/><a class=\"btn\" href=\"/\">Continue shopping</a>");
+		
 	}
 
 }
