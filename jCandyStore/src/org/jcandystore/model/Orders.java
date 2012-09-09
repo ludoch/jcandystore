@@ -22,14 +22,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Orders.findByOrderId", query = "SELECT o FROM Orders o WHERE o.orderId = :orderId"),
     @NamedQuery(name = "Orders.findByUserId", query = "SELECT o FROM Orders o WHERE o.userId = :userId"),
     @NamedQuery(name = "Orders.findByOrderDate", query = "SELECT o FROM Orders o WHERE o.orderDate = :orderDate"),
-    @NamedQuery(name = "Orders.findByShipAddr1", query = "SELECT o FROM Orders o WHERE o.shipAddr1 = :shipAddr1"),
-    @NamedQuery(name = "Orders.findByShipAddr2", query = "SELECT o FROM Orders o WHERE o.shipAddr2 = :shipAddr2"),
     @NamedQuery(name = "Orders.findByShipCity", query = "SELECT o FROM Orders o WHERE o.shipCity = :shipCity"),
     @NamedQuery(name = "Orders.findByShipState", query = "SELECT o FROM Orders o WHERE o.shipState = :shipState"),
     @NamedQuery(name = "Orders.findByShipZip", query = "SELECT o FROM Orders o WHERE o.shipZip = :shipZip"),
     @NamedQuery(name = "Orders.findByShipCountry", query = "SELECT o FROM Orders o WHERE o.shipCountry = :shipCountry"),
-    @NamedQuery(name = "Orders.findByBillAddr1", query = "SELECT o FROM Orders o WHERE o.billAddr1 = :billAddr1"),
-    @NamedQuery(name = "Orders.findByBillAddr2", query = "SELECT o FROM Orders o WHERE o.billAddr2 = :billAddr2"),
     @NamedQuery(name = "Orders.findByBillCity", query = "SELECT o FROM Orders o WHERE o.billCity = :billCity"),
     @NamedQuery(name = "Orders.findByBillState", query = "SELECT o FROM Orders o WHERE o.billState = :billState"),
     @NamedQuery(name = "Orders.findByBillZip", query = "SELECT o FROM Orders o WHERE o.billZip = :billZip"),
@@ -39,7 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Orders.findByBillToFirstname", query = "SELECT o FROM Orders o WHERE o.billToFirstname = :billToFirstname"),
     @NamedQuery(name = "Orders.findByBillToLastname", query = "SELECT o FROM Orders o WHERE o.billToLastname = :billToLastname"),
     @NamedQuery(name = "Orders.findByShipToFirstname", query = "SELECT o FROM Orders o WHERE o.shipToFirstname = :shipToFirstname"),
-    @NamedQuery(name = "Orders.findBySihpToLastname", query = "SELECT o FROM Orders o WHERE o.sihpToLastname = :sihpToLastname"),
     @NamedQuery(name = "Orders.findByCreditCard", query = "SELECT o FROM Orders o WHERE o.creditCard = :creditCard"),
     @NamedQuery(name = "Orders.findByExprDate", query = "SELECT o FROM Orders o WHERE o.exprDate = :exprDate"),
     @NamedQuery(name = "Orders.findByCardType", query = "SELECT o FROM Orders o WHERE o.cardType = :cardType"),
@@ -127,6 +122,23 @@ public class Orders implements Serializable {
 
     public Orders(Integer orderId) {
         this.orderId = orderId;
+        // populate required fields with dummy data
+        this.orderDate = new Date();
+        this.shipAddr1 = "123 highway road";
+        this.shipCity = "CloudVille";
+        this.shipState = "UpThere";
+        this.shipZip = "54321";
+        this.shipCountry = "WayUpThere";
+        this.billAddr1 = "123 highway road";
+        this.billCity = "CloudVille";
+        this.billState = "UpThere";
+        this.billZip = "54321";
+        this.billCountry = "WayUpThere";
+        this.courier = "courier";
+        this.creditCard = "87382-3232-121";
+        this.exprDate = "Never";
+        this.cardType = "YesCard";
+        this.locale = "FR_en";
     }
 
     public Orders(Integer orderId, String userId, Date orderDate, String shipAddr1, String shipCity, String shipState, String shipZip, String shipCountry, String billAddr1, String billCity, String billState, String billZip, String billCountry, String courier, BigDecimal totalPrice, String billToFirstname, String billToLastname, String shipToFirstname, String sihpToLastname, String creditCard, String exprDate, String cardType, String locale) {
@@ -377,7 +389,12 @@ public class Orders implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.candyentities.Orders[ orderId=" + orderId + " ]";
+    	StringBuilder desc = new StringBuilder();
+    	desc.append("["+orderId + "]");
+    	desc.append("|"+totalPrice + " euros");
+    	desc.append("|"+userId);
+    	
+        return desc.toString();
     }
     
 }

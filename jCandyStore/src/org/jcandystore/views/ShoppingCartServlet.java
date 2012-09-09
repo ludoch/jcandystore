@@ -19,11 +19,6 @@ import org.jcandystore.services.ProductService;
 public class ShoppingCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ShoppingCartServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse resp)
 			throws IOException {
@@ -37,6 +32,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		out.println("<h1>Shopping Cart</h1>");
 
 		HttpSession session = request.getSession(true);
+		
 		Enumeration<String> e = session.getAttributeNames();
 		if (!e.hasMoreElements()) {
 			out.println("<em>(empty cart)</em>");
@@ -47,11 +43,13 @@ public class ShoppingCartServlet extends HttpServlet {
 			while (e.hasMoreElements()) {
 				// retrieve product id
 				prodId = e.nextElement();
+				if ("grandTotal".equals(prodId)) continue;
+				
 				// obtain real name from id
 				zeProduct = productService.find(prodId);
 				prodName = zeProduct.getProdName();
 
-				out.println("&bull; " + prodName + " : ");
+				out.println("<br/>&bull; " + prodName + " : ");
 				// retrieve product quantity
 				Integer quantity = (Integer) session.getAttribute(prodId);
 				out.println(quantity);
@@ -62,9 +60,10 @@ public class ShoppingCartServlet extends HttpServlet {
 					// Application Error: should not happen
 					out.println("(<i>Could not retrieve product price</i>)");
 				} else {
-					BigDecimal price = zeItem.getListPrice().round(new MathContext(3));
+					BigDecimal price = zeItem.getListPrice();
 					out.println(" @ " + price + " euros");
 					grandTotal += quantity.floatValue() * price.floatValue();
+					session.setAttribute("grandTotal", grandTotal);
 				}
 			}
 		}
@@ -73,6 +72,7 @@ public class ShoppingCartServlet extends HttpServlet {
 		out.println("<br/><br/><h2>Grand Total: " + grandTotal + " euros<h2>");
 		
 		// TODO: add "checkout" and "continue shopping buttons"
+		
 	}
 
 }

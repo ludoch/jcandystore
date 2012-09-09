@@ -94,11 +94,11 @@
       <div class="row-fluid">
           <div class="hero-unit">
             <h1>Welcome to jCandyStore!</h1>
-            <h2>This demo application was built with the following <a href="http://cloud.google.com/">Google Cloud</a> services :</h2>
+            <h2>This frankenstein* demo application was built with the following <a href="http://cloud.google.com/">Google Cloud</a> services :</h2>
             <ul>
                 <li><a href="http://cloud.google.com/appengine">Google AppEngine</a></li>
-                <li><a href="https://developers.google.com/cloud-sql/">CloudSQL</a></li> 
                 <li><a href="https://developers.google.com/appengine/downloads.html#Google_App_Engine_SDK_for_Java">Google Eclipse SDK</a></li> 
+                <li><a href="https://developers.google.com/cloud-sql/">CloudSQL</a></li> 
                 <li><a href="http://www.youtube.com/watch?v=NU_wNR_UUn4">Cloud Endpoints</a></li> 
                 <li>...</li>
             </ul>
@@ -111,6 +111,11 @@
 				<li>JSF 2.0</li>
 				<li>...</li>
 			</ul>
+
+			<p>
+			<small>*: quickly hacked together to showcase support for those Java APIs, not an architectural blueprint by any mean.</small>
+			</p> 
+
           </div>
       </div><!--/row-->
 

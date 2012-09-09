@@ -22,18 +22,24 @@ import javax.ws.rs.Produces;
 @Path("/product")
 public class ProductService {
     private EntityManager em;
+    private PersistenceService ps;
+    
 
     public ProductService() {
         em = PersistenceService.getInstance().getEntityManager();
+        ps = PersistenceService.getInstance();
     }
 
     @POST
     @Consumes({"application/xml", "application/json"})
     public void create(Product entity) {
         try {
+        	ps.beginTx();
             em.persist(entity);
+            ps.commitTx();
         } catch (PersistenceException pe) {
             pe.printStackTrace();
+            ps.rollbackTx();
         }
     }
 
@@ -41,16 +47,26 @@ public class ProductService {
     @Consumes({"application/xml", "application/json"})
     public void edit(Product entity) {
         try {
+        	ps.beginTx();
             em.merge(entity);
+            ps.commitTx();
         } catch (PersistenceException pe) {
             pe.printStackTrace();
+            ps.rollbackTx();
         }
     }
 
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") String id) {
-        em.remove(em.merge(em.find(Product.class, id)));
+    	try {
+    		ps.beginTx();
+    		em.remove(em.merge(em.find(Product.class, id)));
+    		ps.commitTx();
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		ps.rollbackTx();
+    	}
     }
 
     @GET

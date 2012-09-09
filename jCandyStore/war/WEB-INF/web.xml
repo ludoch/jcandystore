@@ -78,7 +78,16 @@
     <url-pattern>/cart</url-pattern>
   </servlet-mapping>
 
-
+  <servlet>
+    <description/>
+    <servlet-name>CheckoutServlet</servlet-name>
+    <servlet-class>org.jcandystore.views.CheckoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckoutServlet</servlet-name>
+    <url-pattern>/checkout</url-pattern>
+  </servlet-mapping>
+  
   <!-- security-constraint>
     <web-resource-collection>
       <url-pattern>/appstats/*</url-pattern>

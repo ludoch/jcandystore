@@ -52,7 +52,7 @@ public class ProductViewServlet extends HttpServlet {
                 out.println("<br/><a href=\""+ restfulURI + "\">" + restfulURI + "</a>");
             }
         } else { // show individual product and add it to the shopping cart
-        	out.println("<h2>You just added this candy to your <a href=\"/cart\">shopping cart</a>:</h2>");
+        	out.println("<h2>You've just added* this candy to your <a href=\"/cart\">shopping cart</a>:</h2>");
             Product zeProduct = productService.find(productId);
             if (zeProduct == null) {
                 out.println(productId + " : no such product found!");
@@ -84,6 +84,7 @@ public class ProductViewServlet extends HttpServlet {
                     session.setAttribute(prodId, new Integer(currentAmount.intValue() + 1));
                 }
             }
+        	out.println("<p><small><small>*: yes, this is the worse restful mistake one can make...</small></small></p>");            
         }
     }
 
