@@ -25,12 +25,13 @@ public class ShoppingCartServlet extends HttpServlet {
 			throws IOException {
 		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/html;charset=UTF-8");
+		
 		float grandTotal = 0;
 
 		ProductService productService = new ProductService();
 		ItemService itemService = new ItemService();
 
-		out.println("<h1>Shopping Cart</h1>");
+		out.println("<h1>Shopping Cart</h1><p>");
 
 		HttpSession session = request.getSession(true);
 		
@@ -69,15 +70,13 @@ public class ShoppingCartServlet extends HttpServlet {
 				}
 			}
 		}
-		// round off grand total
-		
-		out.println("<br/><br/><h2>Grand Total: " + grandTotal + " euros<h2>");
+		out.println("<br/><br/><h2>Grand Total: " + grandTotal + " euros<h2></p>");
 		
 		// TODO: add "checkout" and "continue shopping buttons"
 		
-		out.println("<br/><a class=\"btn\" href=\"/checkout\">Checkout</a>");
-		out.println("<br/><a class=\"btn\" href=\"/\">Continue shopping</a>");
-		
+		out.println("<br/><a href=\"/checkout\">Checkout</a>");
+		out.println("<br/><a href=\"/\">Continue shopping</a>");
+		out.println("</body></html>");
 	}
 
 }

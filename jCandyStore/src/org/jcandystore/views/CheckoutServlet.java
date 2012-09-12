@@ -2,6 +2,7 @@ package org.jcandystore.views;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Properties;
@@ -76,11 +77,7 @@ public class CheckoutServlet extends HttpServlet {
 		// Send detailed order (content of session) to backoffice queue for shipping
 		// Work with LineItems, ... TODO ...
 		
-		// TODO send ack email to buyer.
 		sendEmailConfirmation(newOrder);
-		
-		// TODO: decide who is the winner and send him mail
-		
 		
 		// clear session
 		session.invalidate();
@@ -89,25 +86,34 @@ public class CheckoutServlet extends HttpServlet {
 	private void sendEmailConfirmation(Orders order) {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
+        
+        UserService userService = UserServiceFactory.getUserService();
+        userService.getCurrentUser().getEmail();
 
-        StringBuilder msgBody = "This is a confirmation that you have made the following order:";
+        StringBuilder msgBody =  new StringBuilder();
+        msgBody.append("This is a confirmation that you have made the following order:\n");
         msgBody.append(order.getUserId());
-        msgBody.append(order.get)
+        msgBody.append("\n" + order.getTotalPrice() + " euros");
+        msgBody.append("\nOrdered on" + order.getOrderDate());
+        msgBody.append("\n(OrderID = " + order.getOrderId() + ")");
+        msgBody.append("\n\nThank you for your business!");
 
         try {
             Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress("admin@example.com", "Example.com Admin"));
+            msg.setFrom(new InternetAddress("admin@jcandystore.appspotmail.com"));
             msg.addRecipient(Message.RecipientType.TO,
-                             new InternetAddress("user@example.com", "Mr. User"));
+                             new InternetAddress(order.getUserId(), "Mr. User"));
+//                    new InternetAddress("alexis.mp@gmail.com", "Mr. User"));
+            msg.addRecipient(Message.RecipientType.CC, 
+            		new InternetAddress("admins"));
             msg.setSubject("Thank you for your order on jCandyStore!");
             msg.setText(msgBody.toString());
             Transport.send(msg);
-
-        } catch (AddressException e) {
-            // ...
         } catch (MessagingException e) {
-            // ...
-        }
+			e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
