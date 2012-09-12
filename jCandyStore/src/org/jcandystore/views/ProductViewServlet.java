@@ -2,6 +2,7 @@ package org.jcandystore.views;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -16,15 +17,30 @@ import org.jcandystore.services.ProductService;
 
 public class ProductViewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private HashMap<String, String> models = new HashMap<String, String>();
 
     public ProductViewServlet() {
         super();
+        models.put("PA-PO-02", "Cupcake.dae");
+        models.put("PA-PO-03", "Donut.dae");
+        models.put("PA-PO-04", "Eclair.dae");        
+        models.put("PA-PO-05", "Froyo.dae");
+        models.put("PA-PO-06", "Gingerbread.dae");
+        models.put("PA-PO-07", "Honeycomb.dae");
+        models.put("PA-PO-08", "IceCreamSandwich.dae");
+        models.put("GE-PO-05", "JellyBean.dae");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html;charset=UTF-8");
+        String head="<!DOCTYPE HTML><html><head>" +
+        		"<script type=\"text/javascript\" src='assets/js/three.js'></script>" +
+        		"<script type=\"text/javascript\" src='assets/js/ColladaLoader.js'></script>" +
+        		"<script type=\"text/javascript\" src='assets/js/model3d.js'></script>" +
+        		"</head><body>";
+        out.println(head);
         
         ProductService productService = new ProductService();
         ItemService itemService = new ItemService();
@@ -59,7 +75,13 @@ public class ProductViewServlet extends HttpServlet {
                 out.println("<br/><a href=\"/\">Back</a>");
                 //resp.sendRedirect();
             } else {
-                out.print (zeProduct.getDescription());
+            	String prodId = zeProduct.getProdId();
+            	if ( models.containsKey(prodId) ) {
+            		out.println(insert3dview(models.get(prodId)));
+            		out.println(zeProduct.getProdName());
+            	} else {
+            		out.println (zeProduct.getDescription());
+            	}
 
                 // get price from equivalent item
                 Item zeItem = itemService.findByProdId(zeProduct.getProdId());
@@ -74,7 +96,6 @@ public class ProductViewServlet extends HttpServlet {
                 String restfulURI = "/resources/product/" + zeProduct.getProdId();
                 out.println("<br/><a href=\""+ restfulURI + "\">" + restfulURI + "</a>");
                 
-                String prodId = zeProduct.getProdId();
                 HttpSession session = req.getSession();
                 
                 Integer currentAmount = (Integer)session.getAttribute( prodId );
@@ -86,6 +107,16 @@ public class ProductViewServlet extends HttpServlet {
             }
         	out.println("<p><small><small>*: yes, this is the worse restful mistake one can make...</small></small></p>");            
         }
+    }
+    
+	private String insert3dview(String model) {
+    	String monDiv = "<div id='toto' style='width:400px; height:400px;'></div>" +
+    			"<script>var el=document.getElementById('toto'); " +
+    			"modelshow(el, \"assets/models/" +
+    			model +
+    			"\") </script> ";
+    	
+    	return monDiv;
     }
 
 }

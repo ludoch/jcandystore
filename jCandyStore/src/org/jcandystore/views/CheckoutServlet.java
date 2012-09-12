@@ -4,7 +4,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -69,12 +77,38 @@ public class CheckoutServlet extends HttpServlet {
 		// Work with LineItems, ... TODO ...
 		
 		// TODO send ack email to buyer.
+		sendEmailConfirmation(newOrder);
 		
 		// TODO: decide who is the winner and send him mail
 		
 		
 		// clear session
 		session.invalidate();
+	}
+
+	private void sendEmailConfirmation(Orders order) {
+        Properties props = new Properties();
+        Session session = Session.getDefaultInstance(props, null);
+
+        StringBuilder msgBody = "This is a confirmation that you have made the following order:";
+        msgBody.append(order.getUserId());
+        msgBody.append(order.get)
+
+        try {
+            Message msg = new MimeMessage(session);
+            msg.setFrom(new InternetAddress("admin@example.com", "Example.com Admin"));
+            msg.addRecipient(Message.RecipientType.TO,
+                             new InternetAddress("user@example.com", "Mr. User"));
+            msg.setSubject("Thank you for your order on jCandyStore!");
+            msg.setText(msgBody.toString());
+            Transport.send(msg);
+
+        } catch (AddressException e) {
+            // ...
+        } catch (MessagingException e) {
+            // ...
+        }
+		
 	}
 
 }
