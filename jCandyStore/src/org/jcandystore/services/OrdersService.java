@@ -70,8 +70,9 @@ public class OrdersService {
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
     public Orders find(@PathParam("id") String id) {
+    	Integer orderId = new Integer(id);
         Query q = em.createNamedQuery("Orders.findByOrderId")
-                .setParameter("orderId", id);
+                .setParameter("orderId", orderId);
         return (Orders) q.getSingleResult();
     }
 

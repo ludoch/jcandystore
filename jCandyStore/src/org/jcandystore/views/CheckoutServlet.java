@@ -68,6 +68,11 @@ public class CheckoutServlet extends HttpServlet {
 		// Send detailed order (content of session) to backoffice queue for shipping
 		// Work with LineItems, ... TODO ...
 		
+		// TODO send ack email to buyer.
+		
+		// TODO: decide who is the winner and send him mail
+		
+		
 		// clear session
 		session.invalidate();
 	}
