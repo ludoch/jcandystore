@@ -120,25 +120,25 @@ public class Orders implements Serializable {
     public Orders() {
         // populate required fields with dummy data
         this.orderDate = new Date();
-        this.shipAddr1 = "123 highway road";
-        this.shipCity = "CloudVille";
-        this.shipState = "UpThere";
-        this.shipZip = "54321";
-        this.shipCountry = "WayUpThere";
-        this.billAddr1 = "123 highway road";
-        this.billCity = "CloudVille";
-        this.billState = "UpThere";
-        this.billZip = "54321";
-        this.billCountry = "WayUpThere";
+        this.shipAddr1 = "3, porte St. Cloud";
+        this.shipCity = "Paris";
+        this.shipState = "N/A";
+        this.shipZip = "75116";
+        this.shipCountry = "France";
+        this.billAddr1 = "3, porte St. Cloud";
+        this.billCity = "Paris";
+        this.billState = "N/A";
+        this.billZip = "75116";
+        this.billCountry = "France";
         this.courier = "courier";
-        this.creditCard = "87382-3232-121";
+        this.creditCard = "11289-18182-001";
         this.exprDate = "Never";
         this.cardType = "YesCard";
         this.locale = "FR_en";
-        this.shipToFirstname = "First Ship";
-        this.sihpToLastname = "Last Ship";
-        this.billToFirstname = "First Bill";
-        this.billToLastname = "Last Bill";
+        this.shipToFirstname = "Paul";
+        this.sihpToLastname = "Tron";
+        this.billToFirstname = "Paul";
+        this.billToLastname = "Tron";
     }
 
     public Orders(Integer orderId) {
