@@ -1,10 +1,6 @@
 package org.jcandystore.services;
 
-import org.jcandystore.db.PersistenceService;
-import org.jcandystore.model.Item;
-
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
@@ -17,6 +13,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import org.jcandystore.db.PersistenceService;
+import org.jcandystore.model.Item;
 
 @Path("/item")
 public class ItemService {

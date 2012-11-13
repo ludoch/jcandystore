@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.jcandystore.db;
 
 import javax.persistence.EntityManager;
@@ -18,11 +14,11 @@ public class PersistenceService {
 
     private final static String DEFAULT_PU = "CandyPU";
     private static EntityManagerFactory pmf;
+
     static {
-        pmf = Persistence.createEntityManagerFactory(DEFAULT_PU);       
+        pmf = Persistence.createEntityManagerFactory(DEFAULT_PU);
     }
     private static ThreadLocal<PersistenceService> instance = new ThreadLocal<PersistenceService>() {
-
         @Override
         protected PersistenceService initialValue() {
             return new PersistenceService();
@@ -30,21 +26,21 @@ public class PersistenceService {
     };
     private EntityManager em;
     private EntityTransaction utx;
-    
-    private PersistenceService() {        
+
+    private PersistenceService() {
         this.em = pmf.createEntityManager();
         this.utx = em.getTransaction();
     }
 
     /**
      * Returns an instance of PersistenceService.
-     * 
+     *
      * @return an instance of PersistenceService
      */
     public static PersistenceService getInstance() {
         return instance.get();
     }
-    
+
     private static void removeInstance() {
         instance.remove();
     }
@@ -98,7 +94,7 @@ public class PersistenceService {
         if (em != null && em.isOpen()) {
             em.close();
         }
-        
+
         removeInstance();
     }
 }

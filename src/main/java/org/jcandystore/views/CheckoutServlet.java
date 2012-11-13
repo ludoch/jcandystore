@@ -1,14 +1,16 @@
 package org.jcandystore.views;
 
+import com.google.android.gcm.server.Sender;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -21,19 +23,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.jcandystore.gcm.ApiKeyInitializer;
-import org.jcandystore.gcm.Datastore;
 import org.jcandystore.gcm.MessageSender;
 import org.jcandystore.model.Orders;
 import org.jcandystore.services.OrdersService;
-
-import com.google.android.gcm.server.Constants;
-import com.google.android.gcm.server.Result;
-import com.google.android.gcm.server.Sender;
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 
 public class CheckoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
