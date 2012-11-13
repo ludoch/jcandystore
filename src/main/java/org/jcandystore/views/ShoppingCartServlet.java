@@ -32,50 +32,51 @@ public class ShoppingCartServlet extends HttpServlet {
         out.println("<h1>Shopping Cart</h1><p>");
 
         HttpSession session = request.getSession(true);
+        synchronized (session) {
+            Enumeration<String> e = session.getAttributeNames();
+            if (!e.hasMoreElements()) {
+                out.println("<em>(empty cart)</em>");
+            } else {
+                String prodId, prodName = null;
+                Product zeProduct = null;
+                Item zeItem = null;
+                while (e.hasMoreElements()) {
+                    // retrieve product id
+                    prodId = e.nextElement();
+                    if ("grandTotal".equals(prodId)) {
+                        continue;
+                    }
 
-        Enumeration<String> e = session.getAttributeNames();
-        if (!e.hasMoreElements()) {
-            out.println("<em>(empty cart)</em>");
-        } else {
-            String prodId, prodName = null;
-            Product zeProduct = null;
-            Item zeItem = null;
-            while (e.hasMoreElements()) {
-                // retrieve product id
-                prodId = e.nextElement();
-                if ("grandTotal".equals(prodId)) {
-                    continue;
-                }
+                    // obtain real name from id
+                    zeProduct = productService.find(prodId);
+                    prodName = zeProduct.getProdName();
 
-                // obtain real name from id
-                zeProduct = productService.find(prodId);
-                prodName = zeProduct.getProdName();
+                    out.println("<br/>&bull; " + prodName + " : ");
+                    // retrieve product quantity
+                    Integer quantity = (Integer) session.getAttribute(prodId);
+                    out.println(quantity);
 
-                out.println("<br/>&bull; " + prodName + " : ");
-                // retrieve product quantity
-                Integer quantity = (Integer) session.getAttribute(prodId);
-                out.println(quantity);
-
-                // get price and update grand total
-                zeItem = itemService.findByProdId(prodId);
-                if (zeItem == null) {
-                    // Application Error: should not happen
-                    out.println("(<i>Could not retrieve product price</i>)");
-                } else {
-                    BigDecimal price = zeItem.getListPrice();
-                    out.println(" @ " + price + " euros");
-                    grandTotal += quantity.floatValue() * price.floatValue();
-                    grandTotal = (new BigDecimal(grandTotal)).setScale(2, RoundingMode.HALF_UP).floatValue();
-                    session.setAttribute("grandTotal", grandTotal);
+                    // get price and update grand total
+                    zeItem = itemService.findByProdId(prodId);
+                    if (zeItem == null) {
+                        // Application Error: should not happen
+                        out.println("(<i>Could not retrieve product price</i>)");
+                    } else {
+                        BigDecimal price = zeItem.getListPrice();
+                        out.println(" @ " + price + " euros");
+                        grandTotal += quantity.floatValue() * price.floatValue();
+                        grandTotal = (new BigDecimal(grandTotal)).setScale(2, RoundingMode.HALF_UP).floatValue();
+                        session.setAttribute("grandTotal", grandTotal);
+                    }
                 }
             }
+            out.println("<br/><br/><h2>Grand Total: " + grandTotal + " euros<h2></p>");
+
+            // TODO: add "checkout" and "continue shopping buttons"
+
+            out.println("<br/><a href=\"/checkout\">Checkout</a>");
+            out.println("<br/><a href=\"/\">Continue shopping</a>");
+            out.println("</body></html>");
         }
-        out.println("<br/><br/><h2>Grand Total: " + grandTotal + " euros<h2></p>");
-
-        // TODO: add "checkout" and "continue shopping buttons"
-
-        out.println("<br/><a href=\"/checkout\">Checkout</a>");
-        out.println("<br/><a href=\"/\">Continue shopping</a>");
-        out.println("</body></html>");
     }
 }
