@@ -9,12 +9,10 @@
        <provider></provider>
         -->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.google.appengine.api.rdbms.AppEngineDriver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:google:rdbms://scott-tiger:scott/jcandystore"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value=""/>
-        </properties>
+    <properties>
+      <property name="javax.persistence.jdbc.user" value="root" />
+      <!--property name="eclipselink.ddl-generation" value="create-tables" /-->
+    </properties>
     </persistence-unit>
 </persistence>
 

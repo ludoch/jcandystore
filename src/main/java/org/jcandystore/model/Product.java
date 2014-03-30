@@ -4,6 +4,8 @@
  */
 package org.jcandystore.model;
 
+import com.google.api.server.spi.config.AnnotationBoolean;
+import com.google.api.server.spi.config.ApiResourceProperty ;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.*;
@@ -34,7 +36,7 @@ public class Product implements Serializable {
     @Column(name = "DESCRIPTION", length = 255)
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    private Collection<Item> itemCollection;
+private Collection<Item> itemCollection;
     @JoinColumns({
         @JoinColumn(name = "PROD_CATEGORY", referencedColumnName = "CAT_ID", nullable = false),
         @JoinColumn(name = "PROD_CATEGORY", referencedColumnName = "CAT_ID", nullable = false)})
@@ -73,14 +75,16 @@ public class Product implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Item> getItemCollection() {
+   @ApiResourceProperty (ignored = AnnotationBoolean.TRUE)
+   public Collection<Item> getItemCollection() {
         return itemCollection;
     }
 
-    public void setItemCollection(Collection<Item> itemCollection) {
+   public void setItemCollection(Collection<Item> itemCollection) {
         this.itemCollection = itemCollection;
     }
 
+   @ApiResourceProperty (ignored = AnnotationBoolean.TRUE)
     public Category getCategory() {
         return category;
     }

@@ -138,10 +138,14 @@ public class Supplier implements Serializable {
         this.phone = phone;
     }
 
-    @XmlTransient
-    public Collection<Item> getItemCollection() {
-        return itemCollection;
-    }
+//    @XmlTransient
+//    public Collection<Item> getItemCollection() {
+//        return itemCollection;
+//    }
+//
+//    public void setItemCollection(Collection<Item> itemCollection) {
+//        this.itemCollection = itemCollection;
+//    }
 
     public void setItemCollection(Collection<Item> itemCollection) {
         this.itemCollection = itemCollection;

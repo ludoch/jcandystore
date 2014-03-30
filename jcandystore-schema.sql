@@ -120,7 +120,13 @@ create table if not exists ITEM (
     PRODUCT_ID varchar(10) not null,
     LIST_PRICE decimal(10,2) null,
     UNIT_COST decimal(10,2) null,
-    SUPPLIER int null
+    SUPPLIER int null,
+     STATUS varchar(2) null,
+     ATTR1 varchar(80) null,
+     ATTR2 varchar(80) null,
+     ATTR3 varchar(80) null,
+    ATTR4 varchar(80) null,
+    ATTR5 varchar(80) null,
 primary key (ITEM_ID) );
 
 -- create table if not exists ITEM (
